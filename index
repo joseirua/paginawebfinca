@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Finca Universitaria - Centro de Investigación Agrícola</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #2E7D32;
+      --secondary-color: #66BB6A;
+      --accent-color: #FFA000;
+      --text-dark: #333;
+      --text-light: #fff;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+    }
+    
+    .navbar {
+      background-color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+    }
+
+    .navbar-brand span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      display: block;
+      color: #E8F5E9;
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--text-light) !important;
+      font-weight: 500;
+      padding: 15px 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: var(--secondary-color);
+      color: var(--text-light) !important;
+      border-radius: 4px;
+    }
+
+    .hero-section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('/api/placeholder/1920/1080') no-repeat center center/cover;
+      position: relative;
+      margin-top: 70px;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--text-light);
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .section-subtitle {
+      font-size: 1.5rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .project-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .project-card h4 {
+      margin: 15px 0;
+      color: var(--primary-color);
+    }
+
+    .pad-sec {
+      padding: 80px 0;
+    }
+
+    .bg-light {
+      background-color: #F8F9FA !important;
+    }
+
+    .stats-box {
+      text-align: center;
+      padding: 20px;
+      background: var(--primary-color);
+      color: var(--text-light);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      height: 100%;
+    }
+
+    .stats-box i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .stats-box h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .history-section {
+      background-color: #f9f9f9;
+      padding: 60px 0;
+    }
+
+    .animal-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      height: 100%;
+    }
+
+    .animal-card h5 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .objectives-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .objectives-list li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .objectives-list li:before {
+      content: '✓';
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+    }
+
+    footer {
+      background: var(--primary-color);
+      padding: 30px 0;
+      color: var(--text-light);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand">UPEC - Finca Universitaria<span>Centro de Investigación Agrícola</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navigation-nav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation-nav">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="#wrapper">Inicio</a>
+            <a class="nav-link" href="#history-section">Historia</a>
+            <a class="nav-link" href="#projects-section">Proyectos</a>
+            <a class="nav-link" href="#services-section">Servicios</a>
+            <a class="nav-link" href="#contact-section">Contacto</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div id="wrapper">
+    <section id="hero-section" class="hero-section">
+      <div class="hero-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h1 class="hero-title">Finca UPEC</h1>
+              <p class="hero-description">Centro de Investigación y Desarrollo Agrícola Sostenible en la Región Norte del Ecuador</p>
+              <a href="#projects-section" class="btn btn-primary btn-lg">Explorar Proyectos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="history-section" class="history-section">
+      <div class="container">
+        <h2 class="section-title text-center">Nuestra Historia</h2>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <p>La Finca Experimental de la Universidad Politécnica Estatal del Carchi (UPEC) se ha consolidado como un pilar fundamental en la formación académica y la investigación agropecuaria de la región norte del Ecuador. Este espacio educativo representa la materialización de la visión institucional de combinar la teoría con la práctica en un entorno real y productivo.</p>
+            <p>Ubicada estratégicamente en una zona que permite el desarrollo de diversos cultivos y la crianza de diferentes especies animales, aprovechamos las condiciones climáticas y geográficas únicas de la provincia del Carchi para desarrollar investigaciones y prácticas adaptadas a las necesidades específicas de la región andina.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects-section" class="pad-sec">
+      <div class="container text-center">
+        <h2 class="section-title">Nuestros Proyectos</h2>
+        <div class="section-subtitle">Innovación en agricultura sostenible</div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="project-card">
+              <img src="/api/placeholder/400/300" alt="Investigación Agrícola">
+              <h4>Investigación Agrícola</h4>
+              <ul class="objectives-list">
+                <li>Evaluación de variedades resistentes</li>
+                <li>Desarrollo de técnicas orgánicas</li>
+                <li>Sistemas de riego eficientes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="project-card">
+              <img src="/api/placeholder/400/300" alt="Producción Pecuaria">
+              <h4>Producción Pecuaria</h4>
+              <ul class="objectives-list">
+                <li>Mejoramiento genético bovino</li>
+                <li>Sistemas silvopastoriles</li>
+                <li>Programas de nutrición animal</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="project-card">
+              <img src="/api/placeholder/400/300" alt="Sostenibilidad">
+              <h4>Sostenibilidad Ambiental</h4>
+              <ul class="objectives-list">
+                <li>Gestión de recursos hídricos</li>
+                <li>Conservación de biodiversidad</li>
+                <li>Manejo integrado de plagas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services-section" class="pad-sec bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Nuestros Servicios</h2>
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <div class="stats-box">
+              <i class="fas fa-seedling"></i>
+              <h3>50+</h3>
+              <p>Hectáreas Cultivadas</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-box">
+              <i class="fas fa-flask"></i>
+              <h3>25+</h3>
+              <p>Proyectos de Investigación</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-box">
+              <i class="fas fa-users"></i>
+              <h3>1000+</h3>
+              <p>Estudiantes Capacitados</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-box">
+              <i class="fas fa-award"></i>
+              <h3>15+</h3>
+              <p>Premios Recibidos</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="animal-card">
+              <h5>Ganado Bovino</h5>
+              <ul class="objectives-list">
+                <li>Holstein Friesian</li>
+                <li>Brown Swiss</li>
+                <li>Jersey</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="animal-card">
+              <h5>Especies Menores</h5>
+              <ul class="objectives-list">
+                <li>Ovinos y Caprinos</li>
+                <li>Cuyes y Conejos</li>
+                <li>Aves de Corral</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="animal-card">
+              <h5>Servicios Educativos</h5>
+              <ul class="objectives-list">
+                <li>Prácticas Académicas</li>
+                <li>Investigación</li>
+                <li>Capacitación Continua</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-section" class="pad-sec">
+      <div class="container text-center">
+        <h2 class="section-title">Contáctanos</h2>
+        <p class="section-subtitle">¿Interesado en nuestros proyectos o servicios? Escríbenos.</p>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <form class="contact-form">
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <input type="text" class="form-control" placeholder="Tu Nombre" required>
+                </div>
+                <div class="col-md-6">
+                  <input type="email" class="form-control" placeholder="Tu Email" required>
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" rows="5" placeholder="Tu Mensaje" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pad-sec bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Compromisos Ambientales</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="project-card">
+              <h4><i class="fas fa-leaf me-2"></i>Prácticas Sostenibles</h4>
+              <ul class="objectives-list">
+                <li>Manejo integral de residuos</li>
+                <li>Conservación de recursos naturales</li>
+                <li>Producción limpia</li>
+                <li>Uso eficiente del agua</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="project-card">
+              <h4><i class="fas fa-tree me-2"></i>Biodiversidad</h4>
+              <ul class="objectives-list">
+                <li>Conservación de especies nativas</li>
+                <li>Protección de áreas naturales</li>
+                <li>Manejo de flora y fauna local</li>
+                <li>Investigación en conservación</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pad-sec">
+      <div class="container">
+        <h2 class="section-title text-center">Infraestructura</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="project-card">
+              <h4><i class="fas fa-warehouse me-2"></i>Áreas Productivas</h4>
+              <ul class="objectives-list">
+                <li>Establos modernos para ganado</li>
+                <li>Galpones para especies menores</li>
+                <li>Áreas de pastoreo rotativo</li>
+                <li>Parcelas experimentales</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="project-card">
+              <h4><i class="fas fa-flask me-2"></i>Instalaciones de Apoyo</h4>
+              <ul class="objectives-list">
+                <li>Laboratorio de análisis de suelos</li>
+                <li>Centro de procesamiento de lácteos</li>
+                <li>Área de preparación de alimentos</li>
+                <li>Bodega de insumos y herramientas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>Ubicación</h5>
+          <p>Provincia del Carchi, Ecuador<br>
+          Región Andina</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Contacto</h5>
+          <p>Email: finca@upec.edu.ec<br>
+          Teléfono: (593) 2-234-5678</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Síguenos</h5>
+          <div class="social-icons">
+            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+      <p class="mb-0">&copy; 2024 Finca Universitaria UPEC - Centro de Investigación Agrícola. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
